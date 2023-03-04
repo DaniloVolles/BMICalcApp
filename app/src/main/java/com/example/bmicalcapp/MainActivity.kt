@@ -28,10 +28,7 @@ class MainActivity : ComponentActivity() {
 
                         Spacer(modifier = Modifier.height(24.dp))
 
-                        // Insert Data
-                        val height = insertHeight()
-                        Spacer(modifier = Modifier.height(8.dp))
-                        val weight = insertWeight()
+                        TextFieldValueScreen()
 
                     }
                 }
