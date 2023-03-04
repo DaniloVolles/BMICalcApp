@@ -9,7 +9,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import kotlin.math.pow
 
 @Composable
-fun insertHeight (): Double {
+fun insertHeight (): TextFieldValue {
     var text by remember {
         mutableStateOf(TextFieldValue(""))
     }
@@ -26,11 +26,11 @@ fun insertHeight (): Double {
         },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
     )
-    return text.toString().toDouble()
+    return text
 }
 
 @Composable
-fun insertWeight (): Double {
+fun insertWeight (): TextFieldValue {
     var text by remember {
         mutableStateOf(TextFieldValue(""))
     }
@@ -47,10 +47,21 @@ fun insertWeight (): Double {
         },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
     )
-    return text.toString().toDouble()
+    return text
+}
+
+@Composable
+fun ShowBMIResult (bmi: Double) {
+    Text(bmiResult(bmi))
 }
 
 fun mathematics (height: Double, weight: Double): Double {
     return weight / (height.pow(2))
 }
 
+fun bmiResult(bmi: Double): String {
+    return if (bmi < 18.5) "Underweight"
+    else if (bmi <= 25) "Normal weight"
+    else if (bmi <= 30) "Overweight"
+    else "Obese"
+}

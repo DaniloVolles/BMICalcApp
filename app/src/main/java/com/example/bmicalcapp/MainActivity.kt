@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.bmicalcapp.ui.theme.BMICalcAppTheme
@@ -20,14 +21,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Column (modifier = Modifier.padding(all = 10.dp)) {
+                    Column (
+                        modifier = Modifier.padding(all = 10.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+
+                        Spacer(modifier = Modifier.height(24.dp))
 
                         // Insert Data
                         val height = insertHeight()
                         Spacer(modifier = Modifier.height(8.dp))
                         val weight = insertWeight()
-
-                        val bmi = mathematics(height, weight)
 
                     }
                 }
