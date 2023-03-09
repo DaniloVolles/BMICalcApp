@@ -11,8 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.pow
@@ -47,7 +47,7 @@ fun TextFieldValueScreen() {
             onValueChange = { height = it }
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(35.dp))
 
         Button(onClick = {
 
@@ -67,16 +67,16 @@ fun TextFieldValueScreen() {
             Text(text = "Calculate")
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(35.dp))
 
         if (total != 0.0)
             Text(
-                text = "Your BMI is $total",
+                text = classification(total),
                 style = TextStyle (
                     fontSize = 20.sp,
-                    fontWeight = FontWeight.SemiBold,
                     fontStyle = FontStyle.Italic,
-                )
+                ),
+                textAlign = TextAlign.Center
             )
     }
 }
@@ -115,4 +115,16 @@ fun TopAppBarUI () {
 
 fun mathematics (height: Double, weight: Double): Double {
     return weight / (height.pow(2))
+}
+
+fun classification (bmi: Double): String {
+
+    val roundBMI = String.format("%.2f", bmi)
+    val str = "Your bmi is $roundBMI and you are"
+
+    return if (bmi < 18.5) "$str underweight"
+    else if (bmi < 25) "$str normal weight"
+    else if (bmi < 30) "$str overweight"
+    else if (bmi < 35) "$str obese"
+    else "$str extremely obese"
 }
