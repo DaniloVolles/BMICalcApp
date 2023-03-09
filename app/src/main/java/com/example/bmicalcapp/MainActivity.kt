@@ -26,19 +26,21 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     Column(Modifier.fillMaxWidth()) {
+
                         TopAppBarUI()
+
+                        Column (
+                            modifier = Modifier.padding(all = 10.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+
+                            Spacer(modifier = Modifier.height(60.dp))
+
+                            TextFieldValueScreen()
+
+                        }
                     }
 
-                    Column (
-                        modifier = Modifier.padding(all = 10.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-
-                        Spacer(modifier = Modifier.height(60.dp))
-
-                        TextFieldValueScreen()
-
-                    }
                 }
             }
         }
