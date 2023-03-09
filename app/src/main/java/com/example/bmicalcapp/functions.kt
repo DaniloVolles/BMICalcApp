@@ -88,7 +88,7 @@ fun CommonTextField(
     text: String,
     onValueChange: (String) -> Unit
 ) {
-    TextField(
+    OutlinedTextField(
         value = text,
         onValueChange = onValueChange,
         label = {
@@ -97,7 +97,9 @@ fun CommonTextField(
         placeholder = {
             Text(text = placeholder)
         },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Number
+        ),
     )
 }
 
